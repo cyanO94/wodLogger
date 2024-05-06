@@ -26,4 +26,5 @@ misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
 .idea/gradle.xml
-
+.idea/vsc.xml
+.idea/deploymentTargetSelector.xml
