@@ -1,20 +1,63 @@
 [versions]
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
+coreKtx = "1.13.1"
+espressoCore = "3.5.1"
+junit = "4.13.2"
+junitVersion = "1.1.5"
 kotlin = "1.9.20"
-jetbrains-kotlin-jvm = "1.9.0"
-androidGradlePlugin = "8.2.2"
+jetbrains-kotlin-jvm = "1.9.20"
+androidGradlePlugin = "8.4.0"
 hilt = "2.50"
+composeCalendar = "2.5.1"
+lifecycleRuntimeKtx = "2.7.0"
+application = "8.4.0"
+composeMaterial3 = "1.2.1"
+desugarJdk = "2.0.4"
 
 [libraries]
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
+# androidx
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+
+# test
+junit = { module = "junit:junit", version.ref = "junit" }
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+
+
+# compose
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+
 # hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+desugar-jdk = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarJdk" }
+compose-calendar = { group = "com.kizitonwose.calendar", name = "compose", version.ref = "composeCalendar" }
 
 
 [plugins]
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }
 kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+application = { id = "com.android.application", version.ref = "application"}
 
+
+
+[bundles]
+compose = ["compose-bom", "material3", "compose-ui", "compose-ui-graphics", "compose-ui-tooling-preview", "activity-compose"]
+compose-debug = ["compose-ui-test-manifest", "compose-ui-tooling"]
+android-test = ["ext-junit", "espresso-core", "ui-test-junit4"]
